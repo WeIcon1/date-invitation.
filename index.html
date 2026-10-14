@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f3ef" />
+  <meta name="description" content="Небольшое приглашение на свидание." />
+  <title>Одно важное приглашение</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="topline"><span class="tiny-dot"></span><span>ОДНО ВАЖНОЕ ПРИГЛАШЕНИЕ</span></div>
+
+    <section class="screen active" id="screen-envelope" aria-labelledby="envelope-title">
+      <div class="eyebrow">для тебя · с теплом</div>
+      <div class="envelope-wrap" aria-hidden="true">
+        <div class="envelope"><div class="envelope-flap"></div><div class="letter"><span>тебе</span><b>♡</b></div><div class="envelope-front"></div><div class="seal">♥</div></div>
+      </div>
+      <h1 id="envelope-title">У тебя есть<br><em>одно важное</em><br>сообщение.</h1>
+      <p class="muted">Открой — там кое-что для тебя.</p>
+      <button class="button primary" id="open-envelope">Открыть письмо <span aria-hidden="true">↗</span></button>
+      <p class="micro">сделано специально для тебя</p>
+    </section>
+
+    <section class="screen" id="screen-question" aria-labelledby="question-title">
+      <div class="step-label">01 <span></span> ВАЖНЫЙ ВОПРОС</div>
+      <div class="scratch-card" id="scratch-card">
+        <div class="scratch-under">
+          <div class="heart-mark">♡</div>
+          <p class="eyebrow">я давно хотел спросить</p>
+          <h2 id="question-title">Пойдёшь со мной<br>на свидание?</h2>
+          <p class="muted small">Сотри защитный слой, чтобы узнать вопрос.</p>
+        </div>
+        <canvas id="scratch-canvas" aria-label="Сотри пальцем защитный слой"></canvas>
+        <div class="scratch-hint" id="scratch-hint"><span>✳</span> Сотри пальцем</div>
+      </div>
+      <div class="answer-area" id="answer-area" aria-hidden="true">
+        <button class="button primary" id="yes-button">Да, конечно <span>♥</span></button>
+        <div class="no-zone" id="no-zone"><button class="button secondary no-button" id="no-button">Нет</button></div>
+        <p class="micro" id="no-caption">Кажется, кнопка «Нет» немного стесняется.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="screen-activity" aria-labelledby="activity-title">
+      <div class="step-label">02 <span></span> НАШ ПЛАН</div>
+      <div class="eyebrow">теперь самое интересное</div>
+      <h2 id="activity-title">Как проведём<br><em>это время?</em></h2>
+      <p class="muted">Выбери то, что тебе больше по душе.</p>
+      <div class="activity-grid" id="activity-grid">
+        <button class="activity-card" data-activity="Прогулка" data-icon="☼"><span class="activity-icon">☼</span><strong>Прогулка</strong><small>Осенний воздух и разговоры</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Кафе или ресторан" data-icon="♡"><span class="activity-icon">♡</span><strong>Кафе или ресторан</strong><small>Вкусная еда и уютная атмосфера</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Кино" data-icon="▹"><span class="activity-icon">▹</span><strong>Кино</strong><small>Фильм, попкорн и мы</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Боулинг или бильярд" data-icon="✳"><span class="activity-icon">✳</span><strong>Боулинг или бильярд</strong><small>Немного азарта и веселья</small><span class="choose-mark">✓</span></button>
+      </div>
+      <button class="button primary full" id="to-calendar" disabled>Выбрать дату <span>→</span></button>
+      <button class="text-button back-button" data-back="screen-question">← Назад</button>
+    </section>
+
+    <section class="screen" id="screen-calendar" aria-labelledby="calendar-title">
+      <div class="step-label">03 <span></span> ВЫБИРАЕМ ДЕНЬ</div>
+      <div class="eyebrow">не торопись, выбирай удобный</div>
+      <h2 id="calendar-title">Когда увидимся?</h2>
+      <div class="calendar-card">
+        <div class="calendar-head"><button class="month-arrow" aria-label="Предыдущий месяц">‹</button><div><strong>Октябрь</strong><span>2026</span></div><button class="month-arrow" aria-label="Следующий месяц">›</button></div>
+        <div class="calendar-grid weekdays"><span>ПН</span><span>ВТ</span><span>СР</span><span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span></div>
+        <div class="calendar-grid" id="calendar-days"></div>
+        <div class="calendar-legend"><span class="legend-dot"></span> выбери удобную дату</div>
+      </div>
+      <div class="time-section" id="time-section" hidden>
+        <div class="time-heading"><strong>А во сколько?</strong><span id="selected-date-label"></span></div>
+        <div class="time-grid" id="time-grid"></div>
+      </div>
+      <button class="button primary full" id="to-confirm" disabled>Посмотреть приглашение <span>→</span></button>
+      <button class="text-button back-button" data-back="screen-activity">← Назад к плану</button>
+    </section>
+
+    <section class="screen" id="screen-confirm" aria-labelledby="confirm-title">
+      <div class="step-label">04 <span></span> ДОГОВОРИЛИСЬ? ♡</div>
+      <div class="confirm-symbol">♡</div>
+      <div class="eyebrow">мне уже нравится этот план</div>
+      <h2 id="confirm-title">Тогда это<br><em>свидание!</em></h2>
+      <p class="muted">Вот что у нас получается:</p>
+      <div class="summary-card">
+        <div class="summary-row"><span class="summary-icon" id="summary-activity-icon">♡</span><div><small>ЧТО ДЕЛАЕМ</small><strong id="summary-activity">Прогулка</strong></div></div>
+        <div class="summary-row"><span class="summary-icon">▦</span><div><small>ДАТА</small><strong id="summary-date">22 октября 2026</strong></div></div>
+        <div class="summary-row"><span class="summary-icon">◷</span><div><small>ВРЕМЯ</small><strong id="summary-time">18:00</strong></div></div>
+      </div>
+      <button class="button primary full" id="send-telegram">Отправить ответ в Telegram <span>↗</span></button>
+      <p class="micro">Откроется Telegram с готовым сообщением — останется выбрать чат и отправить.</p>
+      <button class="text-button" id="restart">Начать сначала</button>
+    </section>
+
+    <footer>маленький план для двоих <span>♡</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
