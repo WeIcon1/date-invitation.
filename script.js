@@ -198,15 +198,7 @@
     $('#summary-time').textContent = state.time;
     showScreen('screen-confirm');
   });
-  $('#send-telegram').addEventListener('click', () => {
-    // Telegram's share dialog needs a URL to share reliably.
-    // The URL is attached separately; custom clickable text cannot be created
-    // through t.me/share/url, so Telegram may show the site link/preview.
-    const message = `Я выбираю наше свидание! ♥\n\nПлан: ${state.activity}${state.icon === 'free' ? `\nМесто: ${state.place}` : ''}\nДата: ${dateLong(state.date)}\nВремя: ${state.time}\n\nЖду встречи 😊`;
-    const siteUrl = 'https://welcon1.github.io/date-invitation/';
-    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(siteUrl)}&text=${encodeURIComponent(message)}`;
-    window.open(shareUrl, '_blank', 'noopener,noreferrer');
-  });
+
   $('#restart').addEventListener('click', () => {
     state.activity = null; state.icon = 'walk'; state.date = null; state.time = null; state.place = ''; customPlace.value = ''; customTime.value = ''; customPlan.hidden = true; noMoves = 0; scratched = false; scratchReady = false;
     $$('.activity-card').forEach(c => c.classList.remove('selected')); $('#to-calendar').disabled = true; $('#to-confirm').disabled = true;
