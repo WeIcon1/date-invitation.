@@ -15,3 +15,6 @@
 
 /* Respect the HTML hidden attribute even on elements with display styles. */
 [hidden] { display: none !important; }
+
+/* Respect the HTML hidden attribute even on elements with display:flex/grid. */
+[hidden] { display: none !important; }
