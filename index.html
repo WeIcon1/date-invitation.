@@ -24,16 +24,14 @@
     </section>
 
     <section class="screen" id="screen-question" aria-labelledby="question-title">
-      <div class="step-label">01 <span></span> ВАЖНЫЙ ВОПРОС</div>
       <div class="scratch-card" id="scratch-card">
         <div class="scratch-under">
           <div class="heart-mark">♡</div>
-          <p class="eyebrow">я давно хотел спросить</p>
           <h2 id="question-title">Пойдёшь со мной<br>на свидание?</h2>
           <p class="muted small">Сотри защитный слой, чтобы узнать вопрос.</p>
         </div>
         <canvas id="scratch-canvas" aria-label="Сотри пальцем защитный слой"></canvas>
-        <div class="scratch-hint" id="scratch-hint"><span>✳</span> Сотри пальцем</div>
+        <div class="scratch-hint" id="scratch-hint">Сотри пальцем</div>
       </div>
       <div class="answer-area" id="answer-area" aria-hidden="true">
         <button class="button primary" id="yes-button">Да, конечно <span>♥</span></button>
@@ -48,10 +46,17 @@
       <h2 id="activity-title">Как проведём<br><em>это время?</em></h2>
       <p class="muted">Выбери то, что тебе больше по душе.</p>
       <div class="activity-grid" id="activity-grid">
-        <button class="activity-card" data-activity="Прогулка" data-icon="☼"><span class="activity-icon">☼</span><strong>Прогулка</strong><small>Осенний воздух и разговоры</small><span class="choose-mark">✓</span></button>
-        <button class="activity-card" data-activity="Кафе или ресторан" data-icon="♡"><span class="activity-icon">♡</span><strong>Кафе или ресторан</strong><small>Вкусная еда и уютная атмосфера</small><span class="choose-mark">✓</span></button>
-        <button class="activity-card" data-activity="Кино" data-icon="▹"><span class="activity-icon">▹</span><strong>Кино</strong><small>Фильм, попкорн и мы</small><span class="choose-mark">✓</span></button>
-        <button class="activity-card" data-activity="Боулинг или бильярд" data-icon="✳"><span class="activity-icon">✳</span><strong>Боулинг или бильярд</strong><small>Немного азарта и веселья</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Прогулка" data-icon="walk"><span class="activity-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42m-9.88 9.88-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg></span><strong>Прогулка</strong><small>Осенний воздух и разговоры</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Свободный вариант" data-icon="free"><span class="activity-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/><path d="M9 12h6m-3-3v6"/></svg></span><strong>Свободный вариант</strong><small>Предложи своё место и время</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Кино" data-icon="film"><span class="activity-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 8 5 4-5 4V8Z"/></svg></span><strong>Кино</strong><small>Фильм, попкорн и мы</small><span class="choose-mark">✓</span></button>
+        <button class="activity-card" data-activity="Боулинг или бильярд" data-icon="bowling"><span class="activity-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="15" r="6"/><circle cx="10" cy="13" r="1"/><circle cx="14" cy="13" r="1"/><path d="M8 5.5a2 2 0 1 1 4 0c0 1.1-2 3.5-2 3.5S8 6.6 8 5.5Zm5-1a1.5 1.5 0 1 1 3 0c0 .8-1.5 2.5-1.5 2.5S13 5.3 13 4.5Z"/></svg></span><strong>Боулинг или бильярд</strong><small>Немного азарта и веселья</small><span class="choose-mark">✓</span></button>
+      </div>
+      <div class="custom-plan" id="custom-plan" hidden>
+        <label for="custom-place">Куда пойдём?</label>
+        <input id="custom-place" type="text" maxlength="120" placeholder="Напиши своё место…" autocomplete="off" />
+        <label for="custom-time">Во сколько?</label>
+        <input id="custom-time" type="text" maxlength="60" placeholder="Например, после 18:00" autocomplete="off" />
+        <p class="field-hint">Дату можно будет выбрать на следующем шаге.</p>
       </div>
       <button class="button primary full" id="to-calendar" disabled>Выбрать дату <span>→</span></button>
       <button class="text-button back-button" data-back="screen-question">← Назад</button>
@@ -82,9 +87,10 @@
       <h2 id="confirm-title">Тогда это<br><em>свидание!</em></h2>
       <p class="muted">Вот что у нас получается:</p>
       <div class="summary-card">
-        <div class="summary-row"><span class="summary-icon" id="summary-activity-icon">♡</span><div><small>ЧТО ДЕЛАЕМ</small><strong id="summary-activity">Прогулка</strong></div></div>
-        <div class="summary-row"><span class="summary-icon">▦</span><div><small>ДАТА</small><strong id="summary-date">22 октября 2026</strong></div></div>
-        <div class="summary-row"><span class="summary-icon">◷</span><div><small>ВРЕМЯ</small><strong id="summary-time">18:00</strong></div></div>
+        <div class="summary-row"><span class="summary-icon" id="summary-activity-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42m0-12.72-1.42 1.42m-9.88 9.88-1.42 1.42"/><circle cx="12" cy="12" r="4"/></svg></span><div><small>ЧТО ДЕЛАЕМ</small><strong id="summary-activity">Прогулка</strong></div></div>
+        <div class="summary-row" id="summary-place-row" hidden><span class="summary-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small>МЕСТО</small><strong id="summary-place"></strong></div></div>
+        <div class="summary-row"><span class="summary-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></span><div><small>ДАТА</small><strong id="summary-date">22 октября 2026</strong></div></div>
+        <div class="summary-row"><span class="summary-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>ВРЕМЯ</small><strong id="summary-time">18:00</strong></div></div>
       </div>
       <button class="button primary full" id="send-telegram">Отправить ответ в Telegram <span>↗</span></button>
       <p class="micro">Откроется Telegram с готовым сообщением — останется выбрать чат и отправить.</p>
