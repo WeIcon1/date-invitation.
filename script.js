@@ -199,12 +199,13 @@
     showScreen('screen-confirm');
   });
   $('#send-telegram').addEventListener('click', () => {
-    // Telegram's share dialog cannot create a hyperlink on custom words.
-    // Share only the invitation details here, avoiding the long URL and preview card.
-    // The site link can be attached manually in Telegram using text formatting.
-    const message = `Я выбираю наше свидание! ♥\n\nПлан: ${state.activity}${state.icon === 'free' ? `\nМесто: ${state.place}` : ''}\nДата: ${dateLong(state.date)}\nВремя: ${state.time}\n\nЖду встречи 😊\n\nОткрыть приглашение 💌`;
-    const url = `https://t.me/share/url?text=${encodeURIComponent(message)}`;
-    window.location.href = url;
+    // Telegram's share dialog needs a URL to share reliably.
+    // The URL is attached separately; custom clickable text cannot be created
+    // through t.me/share/url, so Telegram may show the site link/preview.
+    const message = `Я выбираю наше свидание! ♥\n\nПлан: ${state.activity}${state.icon === 'free' ? `\nМесто: ${state.place}` : ''}\nДата: ${dateLong(state.date)}\nВремя: ${state.time}\n\nЖду встречи 😊`;
+    const siteUrl = 'https://welcon1.github.io/date-invitation/';
+    const shareUrl = `https://t.me/share/url?url=${encodeURIComponent(siteUrl)}&text=${encodeURIComponent(message)}`;
+    window.open(shareUrl, '_blank', 'noopener,noreferrer');
   });
   $('#restart').addEventListener('click', () => {
     state.activity = null; state.icon = 'walk'; state.date = null; state.time = null; state.place = ''; customPlace.value = ''; customTime.value = ''; customPlan.hidden = true; noMoves = 0; scratched = false; scratchReady = false;
