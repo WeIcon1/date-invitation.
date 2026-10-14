@@ -12,3 +12,6 @@
 .custom-plan input:focus{border-color:var(--rose);box-shadow:0 0 0 3px #a65e6817}
 .custom-plan input:last-of-type{margin-bottom:0}
 .field-hint{font-size:10px;line-height:1.5;color:var(--muted);margin:10px 0 0}
+
+/* Respect the HTML hidden attribute even on elements with display styles. */
+[hidden] { display: none !important; }
